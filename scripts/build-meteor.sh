@@ -16,9 +16,10 @@ cd $APP_SOURCE_DIR
 printf "\n[-] Running npm install in app directory...\n\n"
 meteor npm install
 
-# build the bundle
+# remove any app build platforms and build the bundle
 printf "\n[-] Building Meteor application...\n\n"
 mkdir -p $APP_BUNDLE_DIR
+echo "browser\nserver" > .meteor/platforms
 meteor build --server-only --directory $APP_BUNDLE_DIR
 
 # run npm install in bundle
